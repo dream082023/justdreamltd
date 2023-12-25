@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site Maintenance - We are performing essential maintenance and will be back online shortly.">
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" type="x-icon" href="img/logo.jpg" size="30px">
+    <title>Site Maintenance</title>
+
+
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        section.maintenance-container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+    #countdown, #countdown2 {
+font-size: 24px;
+            color: #ff6347;
+      margin-bottom: 20px;
+    }
+
+  p:hover{
+      color: aquamarine;
+      background-color: yellow;
+    }
+
+    #countdown, #countdown2 {
+      border: none;
+      padding: 10px;
+      display: inline-block;
+    }
+    .unselectable {
+        user-select: none;
+    }
+
+#refreshButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        marquee:hover {
+          border: solid 1px #007bff;
+          color: #ff6347;
+        }
+  </style>
+  <title>Countdown Timer</title>
+</head>
+<body>
+<section class="maintenance-container">
+<div class="unselectable" id="unselectableDiv">
+  <marquee onmouseover="this.stop()" onmouseout="this.start()"><i class="fa-solid fa-screwdriver-wrench"></i><h4>This page is Under construction</h4></marquee>
+<h1>Site Under Maintenance</h1>
+        <p>We are performing some essential maintenance. We will be back online shortly.</p>
+  <div id="countdown"></div>
+  <div id="countdown2"></div>
+<div>
+        <button id="refreshButton">Refresh</button>
+    </div><br>
+    <p>This page is Under maintenance so download this app and enjoi.</p>
+    <div>
+    <a href="Just Dream Ltd v2.0.apk" download="Just Dream Ltd v2.0"><img src="img/google-play-badge.png" alt="No Image" height="35px" width="105px"></a>   
+  </div>
+</div>
+</section>
+
+  <script>
+    // Set the date for the first countdown
+    const countDownDate = new Date("Nov 12, 2023 00:00:00").getTime();
+
+    // Update the countdown every 1 second
+    const x = setInterval(function() {
+      // Get the current date and time
+      const now = new Date().getTime();
+
+      // Calculate the remaining time for the first countdown
+      const distance = countDownDate - now;
+
+      // Calculate days, hours, minutes, and seconds for the first countdown
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown for the first timer
+      document.getElementById("countdown").innerHTML = `
+        ${days}d ${hours}h ${minutes}m ${seconds}s
+      `;
+
+      // If the first countdown is over, display a message and clear the interval
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "We will be back shortly";
+
+        // Set the start time for the second countdown (10 minutes after the first countdown)
+        const countDownDate2 = now + 10 * 60 * 1000;
+
+        // Update the second countdown every 1 second
+        const y = setInterval(function() {
+          // Get the current date and time
+          const now2 = new Date().getTime();
+
+          // Calculate the remaining time for the second countdown
+          const distance2 = countDownDate2 - now2;
+
+          // Calculate days, hours, minutes, and seconds for the second countdown
+          const days2 = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+          const hours2 = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes2 = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds2 = Math.floor((distance2 % (1000 * 60)) / 1000);
+
+          // Display the countdown for the second timer
+          document.getElementById("countdown2").innerHTML = `
+            ${days2}d ${hours2}h ${minutes2}m ${seconds2}s
+          `;
+
+          // If the second countdown is over, display a message and clear the interval
+          if (distance2 < 0) {
+            clearInterval(y);
+            document.getElementById("countdown2").innerHTML = "Now refresh the page";
+          }
+        }, 1000);
+      }
+    }, 1000);
+  </script>
+
+<script>
+    // JavaScript
+    var unselectableDiv = document.getElementById("unselectableDiv");
+    unselectableDiv.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+        return false;
+    });
+</script>
+    <script>
+document.getElementById("refreshButton").addEventListener("click", function() {
+    location.reload(true);
+});
+
+    </script>
+
+
+</body>
+</html>
